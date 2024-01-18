@@ -8,12 +8,20 @@
  * Date: 02.12.12
  * Time: 13:22
  */
+/** 
+* Backdrop file load
+*/
+function hook_autoload_info() {
+  return array(
+    'ClassName' => 'views/handlers/field/extrafield_views_integration_handler_field_extrafield.inc',
+  );
+} 
 
 /**
  * Implements hook_views_api().
  */
 function extrafield_views_integration_views_api() {
-  $path = drupal_get_path('module', 'extrafield_views_integration');
+  $path = backdrop_get_path('module', 'extrafield_views_integration');
   return array(
     'api' => '3.0',
     'path' => $path . '/views',
@@ -69,7 +77,7 @@ function _extrafield_views_integration_get_extra_fields_for_entity_type($entity_
       foreach ($temp_fields as $field_name => $temp_field) {
         if (isset($temp_field['callback'])) {
           if (isset($temp_field['file']) && file_exists($temp_field['file'])) {
-            require_once( DRUPAL_ROOT . '/' . $temp_field['file']);
+            require_once( BACKDROP_ROOT . '/' . $temp_field['file']);
           }
           if (function_exists($temp_field['callback'])) {
             $extra_fields[$field_name] = array(
@@ -80,7 +88,7 @@ function _extrafield_views_integration_get_extra_fields_for_entity_type($entity_
             );
             if (isset($temp_field['file'])) {
               $extra_fields[$field_name]['file']
-                = DRUPAL_ROOT . '/' . $temp_field['file'];
+                = BACKDROP_ROOT . '/' . $temp_field['file'];
             }
           }
         }
