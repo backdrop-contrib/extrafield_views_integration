@@ -9,9 +9,9 @@
  * Time: 13:22
  */
 /** 
-* Backdrop file load
+* Implements hook_autoload_info().
 */
-function extrafield_views_integration_hook_autoload_info() {
+function extrafield_views_integration_autoload_info() {
   return array(
     'extrafield_views_integration_handler_field_extrafield' => 'views/handlers/field/extrafield_views_integration_handler_field_extrafield.inc',
   );
