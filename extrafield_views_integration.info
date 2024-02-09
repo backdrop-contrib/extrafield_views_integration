@@ -1,7 +1,6 @@
 type = module
 name = Extrafield Views Integration
 description = Integrate Drupal Core extrafields from type display in views.
-core = 7.x
 backdrop = 1.x
 
 dependencies[] = views
